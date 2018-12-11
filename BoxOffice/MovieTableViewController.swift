@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MovieTableViewController.swift
 //  BoxOffice
 //
 //  Created by Gaon Kim on 11/12/2018.
@@ -8,13 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MovieTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-
 }
-
