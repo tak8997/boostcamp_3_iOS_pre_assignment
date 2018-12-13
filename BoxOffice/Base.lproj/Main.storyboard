@@ -183,24 +183,80 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M0q-z5-Oxg">
-                                    <size key="itemSize" width="246" height="383"/>
+                                    <size key="itemSize" width="288" height="471"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dPg-QO-HqW">
-                                        <rect key="frame" x="64.5" y="0.0" width="246" height="383"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCollectionCell" id="dPg-QO-HqW" customClass="MovieCollectionViewCell" customModule="BoxOffice" customModuleProvider="target">
+                                        <rect key="frame" x="43.5" y="10" width="288" height="471"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="246" height="383"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="471"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="UiI-aP-hxk">
+                                                    <rect key="frame" x="8" y="28" width="272" height="362"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVi-UP-6ia">
+                                                    <rect key="frame" x="8" y="446" width="272" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Yx4-1h-Bp8">
+                                                    <rect key="frame" x="8" y="395" width="272" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVJ-U8-JjK">
+                                                    <rect key="frame" x="8" y="424" width="272" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_allages" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-k0-Ts3">
+                                                    <rect key="frame" x="229.5" y="33" width="45.5" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="F9X-k0-Ts3" secondAttribute="height" multiplier="35:34" id="qz2-G1-LcW"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fVJ-U8-JjK" secondAttribute="trailing" id="0e9-YI-oqH"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Yx4-1h-Bp8" secondAttribute="trailing" id="6fD-GB-dd9"/>
+                                            <constraint firstItem="Yx4-1h-Bp8" firstAttribute="leading" secondItem="dPg-QO-HqW" secondAttribute="leadingMargin" id="6qD-y5-GPH"/>
+                                            <constraint firstItem="Yx4-1h-Bp8" firstAttribute="top" secondItem="UiI-aP-hxk" secondAttribute="bottom" constant="5" id="Ob2-9l-hAD"/>
+                                            <constraint firstItem="fVJ-U8-JjK" firstAttribute="leading" secondItem="dPg-QO-HqW" secondAttribute="leadingMargin" id="Vll-Jg-qGG"/>
+                                            <constraint firstItem="xVi-UP-6ia" firstAttribute="top" secondItem="fVJ-U8-JjK" secondAttribute="bottom" constant="5" id="cVT-ol-ECS"/>
+                                            <constraint firstItem="F9X-k0-Ts3" firstAttribute="width" secondItem="UiI-aP-hxk" secondAttribute="width" multiplier="1/6" id="doP-Il-mMr"/>
+                                            <constraint firstItem="UiI-aP-hxk" firstAttribute="trailing" secondItem="dPg-QO-HqW" secondAttribute="trailingMargin" id="hjn-dm-4Z1"/>
+                                            <constraint firstItem="fVJ-U8-JjK" firstAttribute="top" secondItem="Yx4-1h-Bp8" secondAttribute="bottom" constant="5" id="oZN-9F-MQw"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="F9X-k0-Ts3" secondAttribute="trailing" constant="5" id="pqn-kr-Szb"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="xVi-UP-6ia" secondAttribute="trailing" id="qY4-1g-gY6"/>
+                                            <constraint firstItem="UiI-aP-hxk" firstAttribute="top" secondItem="dPg-QO-HqW" secondAttribute="topMargin" id="t2c-hL-EnJ"/>
+                                            <constraint firstItem="xVi-UP-6ia" firstAttribute="leading" secondItem="dPg-QO-HqW" secondAttribute="leadingMargin" id="tE8-Y5-iWc"/>
+                                            <constraint firstItem="F9X-k0-Ts3" firstAttribute="top" secondItem="dPg-QO-HqW" secondAttribute="topMargin" constant="5" id="v1Y-zJ-mA5"/>
+                                            <constraint firstItem="UiI-aP-hxk" firstAttribute="leading" secondItem="dPg-QO-HqW" secondAttribute="leadingMargin" id="vZK-a3-h3X"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="xVi-UP-6ia" secondAttribute="bottom" id="wPQ-8W-r8M"/>
+                                        </constraints>
                                         <connections>
+                                            <outlet property="ageImageView" destination="F9X-k0-Ts3" id="8s3-ht-RsB"/>
+                                            <outlet property="informationLabel" destination="fVJ-U8-JjK" id="5X2-Ha-Udp"/>
+                                            <outlet property="releaseDateLabel" destination="xVi-UP-6ia" id="KDb-Tx-Hst"/>
+                                            <outlet property="thumbnailImageView" destination="UiI-aP-hxk" id="Rhh-tX-vap"/>
+                                            <outlet property="titleLabel" destination="Yx4-1h-Bp8" id="gbV-sP-GmI"/>
                                             <segue destination="bNE-0m-HDA" kind="show" id="9Gr-Ux-aMI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="O2T-Ap-Nor" id="UG3-OR-iYR"/>
+                                    <outlet property="delegate" destination="O2T-Ap-Nor" id="HoR-CW-3ah"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,8 +270,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="Iud-N3-Pf6">
                         <barButtonItem key="backBarButtonItem" title="영화 목록" id="3Lq-QC-Fti"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_settings" id="Yco-UF-CGm"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_settings" id="Yco-UF-CGm">
+                            <connections>
+                                <action selector="tappedOrderSettingButton:" destination="O2T-Ap-Nor" id="2PY-AK-dBz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="T3Q-WP-e4G" id="TMi-ai-7qe"/>
+                        <outlet property="collectionViewFlowLayout" destination="M0q-z5-Oxg" id="ptM-vk-DRv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHd-lQ-ys3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -231,7 +295,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="lightBlue"/>
-                        <color key="selectedImageTintColor" name="white"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Y9Q-bU-kZ3" kind="relationship" relationship="viewControllers" id="TEY-z2-0Ud"/>
@@ -251,10 +315,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="0rg-K3-qlR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="white"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="lightBlue"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="white"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -275,10 +339,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="9MJ-xf-VVM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="white"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="lightBlue"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="white"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -293,6 +357,7 @@
     </scenes>
     <resources>
         <image name="ic_12" width="20" height="20"/>
+        <image name="ic_allages" width="25" height="20"/>
         <image name="ic_collection" width="25" height="25"/>
         <image name="ic_settings" width="24" height="24"/>
         <image name="ic_table" width="24" height="24"/>
@@ -300,14 +365,8 @@
         <namedColor name="lightBlue">
             <color red="0.33000001311302185" green="0.45199999213218689" blue="0.93199998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JQf-M8-Rhu"/>
+        <segue reference="9Gr-Ux-aMI"/>
     </inferredMetricsTieBreakers>
 </document>

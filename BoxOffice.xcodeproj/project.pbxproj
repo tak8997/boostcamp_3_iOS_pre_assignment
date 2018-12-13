@@ -24,6 +24,7 @@
 		B82810B321C0902D00C90336 /* UIAlertController+OrderSettingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82810B221C0902D00C90336 /* UIAlertController+OrderSettingAction.swift */; };
 		B82810B521C0924400C90336 /* UIViewController+OrderSettingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82810B421C0924400C90336 /* UIViewController+OrderSettingAlert.swift */; };
 		B82810B721C09C5D00C90336 /* UIViewController+OrderTypeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82810B621C09C5D00C90336 /* UIViewController+OrderTypeTitle.swift */; };
+		B8C5753521C0DBFA00B61D75 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C5753421C0DBFA00B61D75 /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		B82810B221C0902D00C90336 /* UIAlertController+OrderSettingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+OrderSettingAction.swift"; sourceTree = "<group>"; };
 		B82810B421C0924400C90336 /* UIViewController+OrderSettingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+OrderSettingAlert.swift"; sourceTree = "<group>"; };
 		B82810B621C09C5D00C90336 /* UIViewController+OrderTypeTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+OrderTypeTitle.swift"; sourceTree = "<group>"; };
+		B8C5753421C0DBFA00B61D75 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				B828109521BF9C3600C90336 /* MovieCollectionViewController.swift */,
+				B8C5753421C0DBFA00B61D75 /* MovieCollectionViewCell.swift */,
 			);
 			path = "Movie Collection";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				B82810A521C023A500C90336 /* MovieDetail.swift in Sources */,
 				B82810B721C09C5D00C90336 /* UIViewController+OrderTypeTitle.swift in Sources */,
 				B82810A921C038A500C90336 /* Requests.swift in Sources */,
+				B8C5753521C0DBFA00B61D75 /* MovieCollectionViewCell.swift in Sources */,
 				B82810A321C021D700C90336 /* MovieList.swift in Sources */,
 				B828109621BF9C3600C90336 /* MovieCollectionViewController.swift in Sources */,
 			);

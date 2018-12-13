@@ -32,7 +32,7 @@ private extension MovieTableViewController {
     
     @objc func didReceiveMovieListNotification(_: Notification) {
         DispatchQueue.main.async {
-            self.setTitle()
+            self.setNavigationTitle()
             self.tableView.reloadData()
         }
     }
@@ -41,7 +41,7 @@ private extension MovieTableViewController {
         if OrderType.shared.movies.isEmpty {
             Requests.requestMovieList(order: OrderType.shared.order) {
                 DispatchQueue.main.async {
-                    self.setTitle()
+                    self.setNavigationTitle()
                     self.tableView.reloadData()
                 }
             }

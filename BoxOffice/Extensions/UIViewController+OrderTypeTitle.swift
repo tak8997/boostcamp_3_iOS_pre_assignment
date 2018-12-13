@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIViewController {
-    func setTitle() {
+    func setNavigationTitle() {
         let order: Order? = OrderType.shared.order
         let title: String? = order?.getTitleName()
-        self.title = title
+        navigationItem.title = title
     }
 }
