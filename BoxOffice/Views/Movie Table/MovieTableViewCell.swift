@@ -10,7 +10,7 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
-    var id: String?
+    private var id: String?
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var gradeImageView: UIImageView!
@@ -30,6 +30,10 @@ class MovieTableViewCell: UITableViewCell {
         id = movie.id
         
         setThumbnailImage(imgUrlString: movie.thumb)
+    }
+    
+    func getId() -> String? {
+        return id
     }
 }
 

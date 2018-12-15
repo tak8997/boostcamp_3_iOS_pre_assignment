@@ -10,7 +10,7 @@ import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
-    var id: String?
+    private var id: String?
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var ageImageView: UIImageView!
@@ -30,6 +30,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         id = movie.id
         
         setThumbnailImage(imgUrlString: movie.thumb)
+    }
+    
+    func getId() -> String? {
+        return id
     }
 }
 

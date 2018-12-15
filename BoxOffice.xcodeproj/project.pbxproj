@@ -93,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B82810A121C021BE00C90336 /* Models */,
+				B8571A0721C5866000BAD905 /* Views */,
 				B82810AC21C0547200C90336 /* Controllers */,
 				B82810AE21C08AFF00C90336 /* Common */,
 				B828109E21C01AE000C90336 /* Network */,
@@ -113,24 +114,6 @@
 				B828109821BF9DDB00C90336 /* Colors.xcassets */,
 			);
 			path = Supports;
-			sourceTree = "<group>";
-		};
-		B828109C21C016CE00C90336 /* Movie Table */ = {
-			isa = PBXGroup;
-			children = (
-				B828109321BF9C2600C90336 /* MovieTableViewController.swift */,
-				B82810AA21C03B2800C90336 /* MovieTableViewCell.swift */,
-			);
-			path = "Movie Table";
-			sourceTree = "<group>";
-		};
-		B828109D21C016E100C90336 /* Movie Collection */ = {
-			isa = PBXGroup;
-			children = (
-				B828109521BF9C3600C90336 /* MovieCollectionViewController.swift */,
-				B8C5753421C0DBFA00B61D75 /* MovieCollectionViewCell.swift */,
-			);
-			path = "Movie Collection";
 			sourceTree = "<group>";
 		};
 		B828109E21C01AE000C90336 /* Network */ = {
@@ -155,9 +138,9 @@
 		B82810AC21C0547200C90336 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B828109C21C016CE00C90336 /* Movie Table */,
-				B828109D21C016E100C90336 /* Movie Collection */,
-				B8F0076021C2876100A44522 /* Movie Detail */,
+				B828109321BF9C2600C90336 /* MovieTableViewController.swift */,
+				B828109521BF9C3600C90336 /* MovieCollectionViewController.swift */,
+				B8F0076121C2878300A44522 /* MovieDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -180,10 +163,35 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		B8F0076021C2876100A44522 /* Movie Detail */ = {
+		B8571A0721C5866000BAD905 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B8F0076121C2878300A44522 /* MovieDetailViewController.swift */,
+				B8571A0821C5867600BAD905 /* Movie Table */,
+				B8571A0921C5868300BAD905 /* Movie Collection */,
+				B8571A0A21C5869100BAD905 /* Movie Detail */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B8571A0821C5867600BAD905 /* Movie Table */ = {
+			isa = PBXGroup;
+			children = (
+				B82810AA21C03B2800C90336 /* MovieTableViewCell.swift */,
+			);
+			path = "Movie Table";
+			sourceTree = "<group>";
+		};
+		B8571A0921C5868300BAD905 /* Movie Collection */ = {
+			isa = PBXGroup;
+			children = (
+				B8C5753421C0DBFA00B61D75 /* MovieCollectionViewCell.swift */,
+			);
+			path = "Movie Collection";
+			sourceTree = "<group>";
+		};
+		B8571A0A21C5869100BAD905 /* Movie Detail */ = {
+			isa = PBXGroup;
+			children = (
 				B8F0076B21C294D500A44522 /* SummaryTableViewCell.swift */,
 				B8F0076521C2944A00A44522 /* SynopsisTableViewCell.swift */,
 				B8F0076721C2948300A44522 /* PeopleTableViewCell.swift */,

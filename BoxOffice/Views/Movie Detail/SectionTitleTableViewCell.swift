@@ -15,4 +15,9 @@ class SectionTitleTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         buttonImageView.image = nil
     }
+    
+    func setButtonImageEnable() {
+        buttonImageView.image = #imageLiteral(resourceName: "btn_compose.png")
+        buttonImageView.isUserInteractionEnabled = true
+    }
 }

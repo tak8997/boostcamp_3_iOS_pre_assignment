@@ -27,9 +27,7 @@ class MovieTableViewController: UIViewController {
         guard let nextViewController: MovieDetailViewController = segue.destination as? MovieDetailViewController,
             let cell: MovieTableViewCell = sender as? MovieTableViewCell else { return }
         
-        nextViewController.id = cell.id
-        nextViewController.movieTitle = cell.titleLabel.text
-        nextViewController.thumbnailImage = cell.thumbnailImageView.image
+        nextViewController.setDefaultData(id: cell.getId(), movieTitle: cell.titleLabel.text, thumbnailImage: cell.thumbnailImageView.image)
     }
 }
 

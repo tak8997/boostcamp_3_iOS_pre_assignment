@@ -10,7 +10,7 @@ import UIKit
 
 class CommentsTableViewCell: UITableViewCell {
 
-    let dateFormatter: DateFormatter = {
+    private let dateFormatter: DateFormatter = {
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
