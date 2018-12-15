@@ -10,11 +10,13 @@ import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var thumbnailImageView: UIImageView!
-    @IBOutlet var ageImageView: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var informationLabel: UILabel!
-    @IBOutlet var releaseDateLabel: UILabel!
+    var id: String?
+    
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var ageImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     
     override func prepareForReuse() {
         thumbnailImageView.image = #imageLiteral(resourceName: "img_placeholder")
@@ -25,6 +27,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         titleLabel.text = movie.title
         informationLabel.text = movie.informationForCollection
         releaseDateLabel.text = movie.date
+        id = movie.id
         
         setThumbnailImage(imgUrlString: movie.thumb)
     }

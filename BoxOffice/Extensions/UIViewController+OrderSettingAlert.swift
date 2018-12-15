@@ -16,9 +16,9 @@ extension UIViewController {
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
-        alert.addOrderSettingAction(order: Order.reservationRate)
-        alert.addOrderSettingAction(order: Order.curation)
-        alert.addOrderSettingAction(order: Order.releaseDate)
+        alert.addOrderSettingActionByOrder(order: Order.reservationRate)
+        alert.addOrderSettingActionByOrder(order: Order.curation)
+        alert.addOrderSettingActionByOrder(order: Order.releaseDate)
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)

@@ -22,6 +22,15 @@ class MovieTableViewController: UIViewController {
     @IBAction func tappedOrderSettingButton(_ sender: UIBarButtonItem) {
         addOrderSettingAlert()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nextViewController: MovieDetailViewController = segue.destination as? MovieDetailViewController,
+            let cell: MovieTableViewCell = sender as? MovieTableViewCell else { return }
+        
+        nextViewController.id = cell.id
+        nextViewController.movieTitle = cell.titleLabel.text
+        nextViewController.thumbnailImage = cell.thumbnailImageView.image
+    }
 }
 
 // MARK:- Private Extension

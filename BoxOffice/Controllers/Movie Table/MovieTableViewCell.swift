@@ -10,12 +10,14 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    var id: String?
+    
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var gradeImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    
+
     override func prepareForReuse() {
         thumbnailImageView.image = #imageLiteral(resourceName: "img_placeholder")
     }
@@ -25,6 +27,7 @@ class MovieTableViewCell: UITableViewCell {
         informationLabel.text = movie.informationForTable
         releaseDateLabel.text = movie.releaseDate
         gradeImageView.image = UIImage(named: movie.gradeImage)
+        id = movie.id
         
         setThumbnailImage(imgUrlString: movie.thumb)
     }
