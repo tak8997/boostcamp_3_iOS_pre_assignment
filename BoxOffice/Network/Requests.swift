@@ -30,6 +30,35 @@ class Requests {
         }
     }
     
+    static func requestMovieDetail(id: String, completion: @escaping ((MovieDetail) -> Void)) {
+        let urlString: String = "http://connect-boxoffice.run.goorm.io/movie?id=\(id)"
+        guard let url: URL = URL(string: urlString) else { return }
+        
+        Network.request(url: url) { data in
+            do {
+                let movieDetail: MovieDetail = try JSONDecoder().decode(MovieDetail.self, from: data)
+                completion(movieDetail)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func requestComments(id: String, completion: @escaping ((CommentList) -> Void)) {
+        let urlString: String = "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)"
+        guard let url: URL = URL(string: urlString) else { return }
+        
+        Network.request(url: url) { data in
+            do {
+                let commentList: CommentList = try JSONDecoder().decode(CommentList.self, from: data)
+                completion(commentList)
+            } catch {
+                print(urlString)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     static func requestImage(imageUrl: String, completion: @escaping ((UIImage) -> Void)) {
         guard let url: URL = URL(string: imageUrl) else { return }
         
