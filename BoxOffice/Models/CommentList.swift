@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-struct Comments: Codable {
+struct CommentList: Codable {
     let movieID: String
     let comments: [Comment]
     
@@ -20,7 +19,7 @@ struct Comments: Codable {
 }
 
 struct Comment: Codable {
-    let rating: Int
+    let rating: Double
     let writer, contents: String
     let movieID: String
     let timestamp: Double
