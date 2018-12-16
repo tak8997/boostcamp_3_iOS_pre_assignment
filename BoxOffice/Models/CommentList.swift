@@ -11,7 +11,7 @@ import Foundation
 struct CommentList: Codable {
     let movieID: String
     let comments: [Comment]
-    
+
     enum CodingKeys: String, CodingKey {
         case movieID = "movie_id"
         case comments
@@ -24,7 +24,7 @@ struct Comment: Codable {
     let movieID: String
     let timestamp: Double
     let id: String
-    
+
     enum CodingKeys: String, CodingKey {
         case rating, writer, contents
         case movieID = "movie_id"

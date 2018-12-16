@@ -9,9 +9,13 @@
 import UIKit
 
 class PeopleTableViewCell: UITableViewCell {
+    // MARK: - Properties
+    // MARK: IBOutlets
     @IBOutlet weak var directorLabel: UILabel!
     @IBOutlet weak var actorLabel: UILabel!
-    
+
+    // MARK: - Methods
+    // MARK: Custom Methods
     func setData(movieDetail: MovieDetail?) {
         directorLabel.text = movieDetail?.director
         actorLabel.text = movieDetail?.actor

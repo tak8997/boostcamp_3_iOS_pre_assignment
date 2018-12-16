@@ -9,8 +9,12 @@
 import UIKit
 
 class SynopsisTableViewCell: UITableViewCell {
+    // MARK: - Properties
+    // MARK: IBOutlets
     @IBOutlet weak var synopsisLabel: UILabel!
-    
+
+    // MARK: - Methods
+    // MARK: Custom Methods
     func setData(movieDetail: MovieDetail?) {
         synopsisLabel.text = movieDetail?.synopsis
     }

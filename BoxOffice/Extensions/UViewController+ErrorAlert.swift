@@ -9,9 +9,12 @@
 import UIKit
 
 extension UIViewController {
-    func presentErrorAlert(actionTitle: String, actionHandler: (()->Void)?) {
-        let alert: UIAlertController = UIAlertController(title: "네트워크 오류", message: "네트워크 오류가 발생했습니다.\n다시 시도해주세요.", preferredStyle: .alert)
-        let action: UIAlertAction = UIAlertAction(title: actionTitle, style: .destructive) { action in
+    // 네트워크 오류 발생시 alert를 실행
+    func presentErrorAlert(actionTitle: String, actionHandler: (() -> Void)?) {
+        let alert: UIAlertController = UIAlertController(title: "네트워크 오류",
+                                                         message: "네트워크 오류가 발생했습니다.\n다시 시도해주세요.",
+                                                         preferredStyle: .alert)
+        let action: UIAlertAction = UIAlertAction(title: actionTitle, style: .destructive) { _ in
             actionHandler?()
         }
         alert.addAction(action)

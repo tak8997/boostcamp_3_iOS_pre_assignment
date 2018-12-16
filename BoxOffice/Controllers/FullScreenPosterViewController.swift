@@ -9,12 +9,12 @@
 import UIKit
 
 class FullScreenPosterViewController: UIViewController {
-    
+
     var image: UIImage?
     var imageUrl: String?
     var scrollView: UIScrollView = UIScrollView()
     var imageView: UIImageView = UIImageView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addScrollView()
@@ -23,7 +23,7 @@ class FullScreenPosterViewController: UIViewController {
     }
 }
 
-// MARK:- Private Extension
+// MARK: - Private Extension
 private extension FullScreenPosterViewController {
     func addScrollView() {
         scrollView = UIScrollView(frame: UIScreen.main.bounds)
@@ -34,19 +34,23 @@ private extension FullScreenPosterViewController {
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)
     }
-    
+
+    // imageView에 tap gesture 연결
     func addTapGesture() {
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedImageview(_:)))
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.tappedImageview(_:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGesture)
     }
-    
+
+    // imageView 탭할 경우 FullScreenPosterController dismiss
     @objc func tappedImageview(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
 }
 
-// MARK:- Scroll View Delegate
+// MARK: - Scroll View Delegate
 extension FullScreenPosterViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView

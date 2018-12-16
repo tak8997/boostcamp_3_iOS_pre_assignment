@@ -20,19 +20,11 @@ struct MovieDetail: Codable {
     let title: String
     let reservationGrade: Int
     let genre: String
-    
-    var reservationGradeAndRate: String {
-        return "\(reservationGrade)위 \(reservationRate)%"
-    }
-    
-    var releaseDate: String {
-        return "\(date) 개봉"
-    }
-    
-    var genreAndDuration: String {
-        return "\(genre) / \(duration)"
-    }
-    
+
+    var reservationGradeAndRate: String { return "\(reservationGrade)위 \(reservationRate)%" }
+    var releaseDate: String { return "\(date) 개봉" }
+    var genreAndDuration: String { return "\(genre) / \(duration)" }
+
     enum CodingKeys: String, CodingKey {
         case reservationRate = "reservation_rate"
         case id, audience

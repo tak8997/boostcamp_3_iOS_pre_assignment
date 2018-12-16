@@ -9,7 +9,8 @@
 import UIKit
 
 extension UIViewController {
-    func setNavigationTitle() {
+    // 정렬 순서에 따른 navigation title 설정
+    func setNavigationTitleByOrder() {
         let order: Order? = OrderType.shared.order
         let title: String? = order?.getTitleName()
         navigationItem.title = title
