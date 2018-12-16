@@ -10,6 +10,7 @@ import UIKit
 
 class MovieCollectionViewController: UIViewController {
     private let cellIdentifier: String = "movieCollectionCell"
+    private let refreshControl: UIRefreshControl = UIRefreshControl()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
@@ -19,6 +20,7 @@ class MovieCollectionViewController: UIViewController {
         setNavigationTitle()
         addMovieListNotificationObserver()
         requestDataIfMovieListIsEmpty()
+        setRefreshControl()
     }
     
     override func viewDidLayoutSubviews() {
@@ -66,6 +68,23 @@ private extension MovieCollectionViewController {
         let height: CGFloat = width * 1.8
         collectionViewFlowLayout.itemSize = CGSize(width: width, height: height)
     }
+    
+    @objc func refresh() {
+        Requests.requestMovieList(order: OrderType.shared.order) {
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    func setRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.tintColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+        refreshControl.attributedTitle = NSAttributedString(string: "영화 목록을 업데이트하는 중입니다.")
+        collectionView.refreshControl = refreshControl
+    }
+
 }
 
 // MARK:- Collection View Data Source

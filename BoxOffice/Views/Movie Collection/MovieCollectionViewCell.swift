@@ -20,6 +20,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         thumbnailImageView.image = #imageLiteral(resourceName: "img_placeholder")
+        ageImageView.image = nil
     }
     
     func setData(movie: Movie) {

@@ -10,6 +10,7 @@ import UIKit
 
 class MovieTableViewController: UIViewController {
     private let cellIdentifier: String = "movieTableCell"
+    private let refreshControl: UIRefreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,6 +18,7 @@ class MovieTableViewController: UIViewController {
         super.viewDidLoad()
         addMovieListNotificationObserver()
         requestDataIfMovieListIsEmpty()
+        setRefreshControl()
     }
     
     @IBAction func tappedOrderSettingButton(_ sender: UIBarButtonItem) {
@@ -53,6 +55,22 @@ private extension MovieTableViewController {
                 }
             }
         }
+    }
+    
+    @objc func refresh() {
+        Requests.requestMovieList(order: OrderType.shared.order) {
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func setRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.tintColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+        refreshControl.attributedTitle = NSAttributedString(string: "영화 목록을 업데이트하는 중입니다.")
+        tableView.refreshControl = refreshControl
     }
 }
 
