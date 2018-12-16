@@ -25,6 +25,7 @@ class SummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var genreAndDuration: UILabel!
+    @IBOutlet weak var ratingView: Rating!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,12 +42,16 @@ class SummaryTableViewCell: UITableViewCell {
         genreAndDuration.text = detail.genreAndDuration
         userRatingLabel.text = String(detail.userRating)
         audienceLabel.text = numberFormatter.string(from: NSNumber(integerLiteral: detail.audience))
+        ratingView.setRating(rating: detail.userRating)
     }
     
     override func prepareForReuse() {
         thumbnailImageView.image = #imageLiteral(resourceName: "img_placeholder")
     }
-    
+}
+
+// MARK:- Private Extension
+private extension SummaryTableViewCell {
     func addTapGesture() {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedThumbnailImageView(_:)))
         thumbnailImageView.addGestureRecognizer(tapGesture)
@@ -55,8 +60,10 @@ class SummaryTableViewCell: UITableViewCell {
     @objc func tappedThumbnailImageView(_ sender: UITapGestureRecognizer) {
         delegate?.presentNextViewController()
     }
+
 }
 
+// MARK:- Protocol
 protocol CustomTapGestureDelegate {
     func presentNextViewController()
 }
