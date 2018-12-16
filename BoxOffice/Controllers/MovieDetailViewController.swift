@@ -91,7 +91,7 @@ private extension MovieDetailViewController {
     func getTitleCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, section: Section, title: String) -> UITableViewCell {
         guard let cell: SectionTitleTableViewCell = tableView.dequeueReusableCell(withIdentifier: titleCellIdentifier, for: indexPath) as? SectionTitleTableViewCell else { return UITableViewCell() }
         
-        cell.sectionTitleLabel.text = "줄거리"
+        cell.sectionTitleLabel.text = title
         
         return cell
     }
