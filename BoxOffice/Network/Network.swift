@@ -9,9 +9,11 @@
 import UIKit
 
 class Network {
+    private static var cache: URLCache = URLCache.shared
+    private static var session: URLSession = URLSession(configuration: .default)
+    
     static func request(url: URL, handler: @escaping ((Data?, Error?) -> Void)) {
         turnOnNetworkIndicator()
-        let session: URLSession = URLSession(configuration: .default)
         let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data, response, error) in
             turnOffNetworkIndicator()
             
@@ -28,8 +30,24 @@ class Network {
     }
     
     static func fetchImage(url: URL, handler: @escaping ((Data) -> Void)) {
-        guard let data: Data = try? Data(contentsOf: url) else { return }
-        handler(data)
+        let request: URLRequest = URLRequest(url: url)
+        if let cachedResponse: CachedURLResponse = cache.cachedResponse(for: request) {
+            handler(cachedResponse.data)
+        } else {
+            let dataTask: URLSessionDataTask = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                if let data = data, let response = response {
+                    self.cache.storeCachedResponse(CachedURLResponse(response: response, data: data), for: request)
+                    
+                    handler(data)
+                }
+            }
+            dataTask.resume()
+        }
     }
 }
 
