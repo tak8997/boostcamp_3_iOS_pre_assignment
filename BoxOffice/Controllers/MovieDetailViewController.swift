@@ -13,7 +13,6 @@ class MovieDetailViewController: UIViewController {
     private var id: String?
     private var movieTitle: String?
     private var thumbnailImage: UIImage?
-    private var largeImage: UIImage?
     private var movieDetail: MovieDetail?
     private var commentList: CommentList?
     private let titleCellIdentifier: String = "sectionTitleCell"
@@ -46,23 +45,24 @@ class MovieDetailViewController: UIViewController {
 private extension MovieDetailViewController {
     func requestData() {
         guard let id = id else { return }
-        Requests.requestMovieDetail(id: id) { movieDetail in
-            self.movieDetail = movieDetail
+        Requests.requestMovieDetail(id: id) { [weak self] movieDetail in
+            self?.movieDetail = movieDetail
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
+            self?.loadLargeImage(imageUrl: movieDetail.image)
         }
-        Requests.requestComments(id: id) { commentList in
-            self.commentList = commentList
+        Requests.requestComments(id: id) { [weak self] commentList in
+            self?.commentList = commentList
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
     
     func loadLargeImage(imageUrl: String) {
-        Requests.requestImage(imageUrl: imageUrl) { image in
-            self.largeImage = image
+        Requests.requestImage(imageUrl: imageUrl) { [weak self] image in
+            self?.thumbnailImage = image
         }
     }
     
@@ -78,6 +78,8 @@ private extension MovieDetailViewController {
         guard let cell: SummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? SummaryTableViewCell else { return UITableViewCell() }
         
         cell.setData(movieDetail: movieDetail, thumbnailImage: thumbnailImage)
+        cell.selectionStyle = .none
+        cell.delegate = self
         
         return cell
     }
@@ -87,7 +89,7 @@ private extension MovieDetailViewController {
             let cell: UITableViewCell = getTitleCell(tableView, cellForRowAt: indexPath, section: section, title: "줄거리")
             return cell
         } else {
-            guard let cell: SynopsisTableViewCell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? SynopsisTableViewCell else { return UITableViewCell() }
+            guard let cell: SynopsisTableViewCell  = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? SynopsisTableViewCell else { return UITableViewCell() }
             
             cell.setData(movieDetail: movieDetail)
             
@@ -174,5 +176,15 @@ extension MovieDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return .leastNormalMagnitude
+    }
+}
+
+// MARK: - Custom Tap Gesture Delegate
+extension MovieDetailViewController: CustomTapGestureDelegate {
+    func presentNextViewController() {
+        let viewController: FullScreenPosterViewController = FullScreenPosterViewController()
+        viewController.image = thumbnailImage
+        viewController.modalTransitionStyle = .crossDissolve
+        present(viewController, animated: true, completion: nil)
     }
 }

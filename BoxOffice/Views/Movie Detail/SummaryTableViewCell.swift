@@ -9,7 +9,15 @@
 import UIKit
 
 class SummaryTableViewCell: UITableViewCell {
-
+    
+    var delegate: CustomTapGestureDelegate?
+    
+    private let numberFormatter: NumberFormatter = {
+        let formatter: NumberFormatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var reservationRateLabel: UILabel!
     @IBOutlet weak var userRatingLabel: UILabel!
@@ -18,25 +26,37 @@ class SummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var genreAndDuration: UILabel!
     
-    func setData(movieDetail: MovieDetail?, thumbnailImage: UIImage?) {
-        thumbnailImageView.image = thumbnailImage
-        reservationRateLabel.text = movieDetail?.reservationGradeAndRate
-        titleLabel.text = movieDetail?.title
-        releaseDateLabel.text = movieDetail?.releaseDate
-        genreAndDuration.text = movieDetail?.genreAndDuration
-        
-        if let userRating = movieDetail?.userRating {
-            userRatingLabel.text = String(userRating)
-        }
-        
-        let numberFormatter: NumberFormatter = {
-            let formatter: NumberFormatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            return formatter
-        }()
-        
-        if let audience = movieDetail?.audience {
-            audienceLabel.text = numberFormatter.string(from: NSNumber(integerLiteral: audience))
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        addTapGesture()
     }
+    
+    func setData(movieDetail: MovieDetail?, thumbnailImage: UIImage?) {
+        guard let detail = movieDetail else { return }
+        
+        thumbnailImageView.image = thumbnailImage
+        reservationRateLabel.text = detail.reservationGradeAndRate
+        titleLabel.text = detail.title
+        releaseDateLabel.text = detail.releaseDate
+        genreAndDuration.text = detail.genreAndDuration
+        userRatingLabel.text = String(detail.userRating)
+        audienceLabel.text = numberFormatter.string(from: NSNumber(integerLiteral: detail.audience))
+    }
+    
+    override func prepareForReuse() {
+        thumbnailImageView.image = #imageLiteral(resourceName: "img_placeholder")
+    }
+    
+    func addTapGesture() {
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedThumbnailImageView(_:)))
+        thumbnailImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tappedThumbnailImageView(_ sender: UITapGestureRecognizer) {
+        delegate?.presentNextViewController()
+    }
+}
+
+protocol CustomTapGestureDelegate {
+    func presentNextViewController()
 }
