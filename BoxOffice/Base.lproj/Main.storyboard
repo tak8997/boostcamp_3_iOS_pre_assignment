@@ -302,7 +302,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="5AA-WA-SFR" secondAttribute="bottom" constant="10" id="79y-dT-23m"/>
                                                 <constraint firstItem="RT4-Wk-pYo" firstAttribute="leading" secondItem="DjJ-nh-iTA" secondAttribute="leading" id="8Ez-bR-Szb"/>
                                                 <constraint firstItem="DjJ-nh-iTA" firstAttribute="leading" secondItem="nJT-n1-tpZ" secondAttribute="leading" id="FcE-XA-YOE"/>
-                                                <constraint firstItem="Oci-Tk-6iU" firstAttribute="width" secondItem="yOL-3d-D0O" secondAttribute="width" multiplier="1/3" constant="-15" id="Hev-n4-5A5"/>
+                                                <constraint firstItem="Oci-Tk-6iU" firstAttribute="width" secondItem="yOL-3d-D0O" secondAttribute="width" multiplier="1/3" priority="999" constant="-15" id="Hev-n4-5A5"/>
                                                 <constraint firstItem="vAQ-Ya-tpU" firstAttribute="leading" secondItem="UjY-mR-8ni" secondAttribute="trailing" id="JC0-Ad-S3Z"/>
                                                 <constraint firstItem="DjJ-nh-iTA" firstAttribute="top" secondItem="RT4-Wk-pYo" secondAttribute="bottom" constant="5" id="JNr-mN-cdv"/>
                                                 <constraint firstItem="nJT-n1-tpZ" firstAttribute="bottom" secondItem="Oci-Tk-6iU" secondAttribute="bottom" constant="-20" id="NzH-VP-574"/>
@@ -429,7 +429,7 @@
                                         <rect key="frame" x="0.0" y="564.5" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oGc-MB-Oty" id="JyU-JO-8aK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="synopsis" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqw-fB-DVj">
@@ -454,7 +454,7 @@
                                         <rect key="frame" x="0.0" y="637.5" width="375" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WBQ-Y8-Q5p" id="Rlu-Bl-AQF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_loading" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-pl-f5J">
@@ -499,7 +499,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="Wcd-0y-lr8" firstAttribute="width" secondItem="gmC-rn-hda" secondAttribute="width" id="0HR-HG-hmk"/>
-                                                        <constraint firstAttribute="width" secondItem="V9V-Bn-jEY" secondAttribute="height" multiplier="5:1" id="0lx-xQ-V4a"/>
+                                                        <constraint firstAttribute="width" secondItem="V9V-Bn-jEY" secondAttribute="height" multiplier="5:1" priority="999" id="0lx-xQ-V4a"/>
                                                         <constraint firstItem="Bqf-qI-xPK" firstAttribute="width" secondItem="apX-Xp-K7i" secondAttribute="width" id="11J-xZ-KaJ"/>
                                                         <constraint firstItem="apX-Xp-K7i" firstAttribute="width" secondItem="r7Q-fQ-aq3" secondAttribute="width" id="Yka-24-Epx"/>
                                                         <constraint firstItem="gmC-rn-hda" firstAttribute="width" secondItem="Bqf-qI-xPK" secondAttribute="width" id="jaa-9j-MWG"/>
@@ -507,8 +507,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="fxG-pl-f5J" firstAttribute="height" secondItem="Rlu-Bl-AQF" secondAttribute="width" multiplier="1/5" id="5bB-TG-MXh"/>
-                                                <constraint firstItem="fxG-pl-f5J" firstAttribute="width" secondItem="Rlu-Bl-AQF" secondAttribute="width" multiplier="1/5" id="BnQ-nS-OUP"/>
+                                                <constraint firstItem="fxG-pl-f5J" firstAttribute="height" secondItem="Rlu-Bl-AQF" secondAttribute="width" multiplier="1/5" priority="999" id="5bB-TG-MXh"/>
+                                                <constraint firstItem="fxG-pl-f5J" firstAttribute="width" secondItem="Rlu-Bl-AQF" secondAttribute="width" multiplier="1/5" priority="999" id="BnQ-nS-OUP"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="THs-YL-IGF" secondAttribute="trailing" id="Cby-yC-u15"/>
                                                 <constraint firstItem="hhV-0o-uQo" firstAttribute="leading" secondItem="fxG-pl-f5J" secondAttribute="trailing" constant="21" id="FQ1-uL-ybk"/>
                                                 <constraint firstItem="hhV-0o-uQo" firstAttribute="top" secondItem="fxG-pl-f5J" secondAttribute="top" id="G6j-z5-WDw"/>
@@ -523,10 +523,11 @@
                                                 <constraint firstItem="fxG-pl-f5J" firstAttribute="top" secondItem="Rlu-Bl-AQF" secondAttribute="topMargin" constant="10" id="dkX-gC-HDd"/>
                                                 <constraint firstItem="V9V-Bn-jEY" firstAttribute="leading" secondItem="hhV-0o-uQo" secondAttribute="trailing" constant="13" id="fIE-Tc-UQM"/>
                                                 <constraint firstItem="q0y-Sv-qCb" firstAttribute="leading" secondItem="hhV-0o-uQo" secondAttribute="leading" id="nhl-6T-Iwo"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="fxG-pl-f5J" secondAttribute="bottom" constant="10" id="ooY-KV-jrs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="V9V-Bn-jEY" firstAttribute="width" secondItem="WBQ-Y8-Q5p" secondAttribute="width" multiplier="1/4" id="Z9e-hv-RO7"/>
+                                            <constraint firstItem="V9V-Bn-jEY" firstAttribute="width" secondItem="WBQ-Y8-Q5p" secondAttribute="width" multiplier="1/4" priority="999" id="Z9e-hv-RO7"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="contentLabel" destination="THs-YL-IGF" id="wyf-3h-cRl"/>
