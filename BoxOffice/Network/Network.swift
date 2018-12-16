@@ -15,8 +15,6 @@ class Network {
     static func request(url: URL, handler: @escaping ((Data?, Error?) -> Void)) {
         turnOnNetworkIndicator()
         let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data, response, error) in
-            turnOffNetworkIndicator()
-            
             if let error = error {
                 print(error.localizedDescription)
                 handler(nil, error)
@@ -25,6 +23,7 @@ class Network {
             
             guard let data: Data = data else { return }
             handler(data, nil)
+            turnOffNetworkIndicator()
         }
         dataTask.resume()
     }
@@ -52,15 +51,24 @@ class Network {
 }
 
 extension Network {
+    static var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+    
     private static func turnOnNetworkIndicator() {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            if let window = UIApplication.shared.keyWindow {
+                activityIndicator.center = window.center
+                activityIndicator.hidesWhenStopped = true
+                activityIndicator.startAnimating()
+                window.addSubview(activityIndicator)
+            }
         }
     }
     
     private static func turnOffNetworkIndicator() {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            activityIndicator.stopAnimating()
         }
     }
 }
