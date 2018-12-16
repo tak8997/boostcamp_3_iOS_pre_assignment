@@ -9,7 +9,7 @@
 import UIKit
 
 class Network {
-    static func request(url: URL, handler: @escaping ((Data) -> Void)) {
+    static func request(url: URL, handler: @escaping ((Data?, Error?) -> Void)) {
         turnOnNetworkIndicator()
         let session: URLSession = URLSession(configuration: .default)
         let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data, response, error) in
@@ -17,11 +17,12 @@ class Network {
             
             if let error = error {
                 print(error.localizedDescription)
+                handler(nil, error)
                 return
             }
             
             guard let data: Data = data else { return }
-            handler(data)
+            handler(data, nil)
         }
         dataTask.resume()
     }

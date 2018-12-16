@@ -51,13 +51,17 @@ private extension MovieCollectionViewController {
             self.collectionView.reloadData()
         }
     }
-    
+
     func requestDataIfMovieListIsEmpty() {
         if OrderType.shared.movies.isEmpty {
-            Requests.requestMovieList(order: OrderType.shared.order) {
-                DispatchQueue.main.async {
-                    self.setNavigationTitle()
-                    self.collectionView.reloadData()
+            Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (data, error) in
+                if let _ = error {
+                    self?.presentErrorAlert(actionTitle: "닫기", actionHandler: nil)
+                } else {
+                    DispatchQueue.main.async {
+                        self?.setNavigationTitle()
+                        self?.collectionView.reloadData()
+                    }
                 }
             }
         }
@@ -70,14 +74,18 @@ private extension MovieCollectionViewController {
     }
     
     @objc func refresh() {
-        Requests.requestMovieList(order: OrderType.shared.order) {
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-                self.collectionView.reloadData()
+        Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (data, error) in
+            if let _ = error {
+                self?.presentErrorAlert(actionTitle: "닫기", actionHandler: nil)
+            } else {
+                DispatchQueue.main.async {
+                    self?.refreshControl.endRefreshing()
+                    self?.collectionView.reloadData()
+                }
             }
         }
     }
-    
+
     func setRefreshControl() {
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)

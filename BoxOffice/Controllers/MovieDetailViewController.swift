@@ -44,18 +44,40 @@ class MovieDetailViewController: UIViewController {
 // MARK:- Private Extension
 private extension MovieDetailViewController {
     func requestData() {
+        var flag: Bool = true
         guard let id = id else { return }
-        Requests.requestMovieDetail(id: id) { [weak self] movieDetail in
-            self?.movieDetail = movieDetail
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        Requests.requestMovieDetail(id: id) { [weak self] (movieDetail, error) in
+            if let _ = error {
+                if flag {
+                    flag.toggle()
+                    self?.presentErrorAlert(actionTitle: "돌아가기", actionHandler: {
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                }
             }
-            self?.loadLargeImage(imageUrl: movieDetail.image)
+            if let movieDetail = movieDetail {
+                self?.movieDetail = movieDetail
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                self?.loadLargeImage(imageUrl: movieDetail.image)
+            }
         }
-        Requests.requestComments(id: id) { [weak self] commentList in
-            self?.commentList = commentList
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        
+        Requests.requestComments(id: id) { [weak self] (commentList, error) in
+            if let _ = error {
+                if flag {
+                    flag.toggle()
+                    self?.presentErrorAlert(actionTitle: "돌아가기", actionHandler: {
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+            if let commentList = commentList {
+                self?.commentList = commentList
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             }
         }
     }

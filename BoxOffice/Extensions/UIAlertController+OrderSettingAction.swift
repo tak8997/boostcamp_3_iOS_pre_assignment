@@ -13,7 +13,8 @@ extension UIAlertController {
         guard let title: String = order?.getActionName() else { return }
         let action: UIAlertAction = UIAlertAction(title: title, style: .default) { action in
             OrderType.shared.order = order
-            Requests.requestMovieList(order: order, completion: nil)
+            Requests.requestMovieList(order: order, completion: { (data, error) in
+            })
         }
         self.addAction(action)
     }

@@ -48,20 +48,28 @@ private extension MovieTableViewController {
     
     func requestDataIfMovieListIsEmpty() {
         if OrderType.shared.movies.isEmpty {
-            Requests.requestMovieList(order: OrderType.shared.order) {
-                DispatchQueue.main.async {
-                    self.setNavigationTitle()
-                    self.tableView.reloadData()
+            Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (data, error) in
+                if let _ = error {
+                    self?.presentErrorAlert(actionTitle: "닫기", actionHandler: nil)
+                } else {
+                    DispatchQueue.main.async {
+                        self?.setNavigationTitle()
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         }
     }
     
     @objc func refresh() {
-        Requests.requestMovieList(order: OrderType.shared.order) {
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-                self.tableView.reloadData()
+        Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (data, error) in
+            if let _ = error {
+                self?.presentErrorAlert(actionTitle: "닫기", actionHandler: nil)
+            } else {
+                DispatchQueue.main.async {
+                    self?.refreshControl.endRefreshing()
+                    self?.tableView.reloadData()
+                }
             }
         }
     }
