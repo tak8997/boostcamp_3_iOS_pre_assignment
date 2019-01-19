@@ -121,47 +121,40 @@ private extension MovieDetailViewController {
 
     // SynopsisTableViewCell
     func getSynopsisCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, section: Section) -> UITableViewCell {
-        if indexPath.row == 0 {
+        guard indexPath.row > 0 else {
             let cell: UITableViewCell = getTitleCell(tableView, cellForRowAt: indexPath, section: section, title: "줄거리")
             return cell
-        } else {
-            guard let cell: SynopsisTableViewCell  = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? SynopsisTableViewCell else { return UITableViewCell() }
-
-            cell.setData(movieDetail: movieDetail)
-
-            return cell
         }
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? SynopsisTableViewCell else { return UITableViewCell() }
+        cell.setData(movieDetail: movieDetail)
+        return cell
     }
 
     // PeopleTableViewCell
     func getPeopleCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, section: Section) -> UITableViewCell {
-        if indexPath.row == 0 {
+        guard indexPath.row > 0 else {
             let cell: UITableViewCell = getTitleCell(tableView, cellForRowAt: indexPath, section: section, title: "감독 / 출연")
             return cell
-        } else {
-            guard let cell: PeopleTableViewCell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? PeopleTableViewCell else { return UITableViewCell() }
-
-            cell.setData(movieDetail: movieDetail)
-
-            return cell
         }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? PeopleTableViewCell else { return UITableViewCell() }
+        cell.setData(movieDetail: movieDetail)
+        return cell
     }
 
     // CommentTableViewCell
     func getCommentCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, section: Section) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell: SectionTitleTableViewCell = getTitleCell(tableView, cellForRowAt: indexPath, section: section, title: "한줄평") as? SectionTitleTableViewCell else { return UITableViewCell() }
+        guard indexPath.row > 0 else {
+            guard let cell = getTitleCell(tableView, cellForRowAt: indexPath, section: section, title: "한줄평") as? SectionTitleTableViewCell else { return UITableViewCell() }
             cell.setButtonImageEnable()
             return cell
-        } else {
-            guard let cell: CommentsTableViewCell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? CommentsTableViewCell else { return UITableViewCell() }
-
-            guard let comment: Comment = commentList?.comments[indexPath.row - 1] else { return UITableViewCell() }
-
-            cell.setData(comment: comment)
-
-            return cell
         }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: section.rawValue, for: indexPath) as? CommentsTableViewCell,
+            let comment = commentList?.comments[indexPath.row - 1] else { return UITableViewCell() }
+        cell.setData(comment: comment)
+        return cell
     }
 }
 
