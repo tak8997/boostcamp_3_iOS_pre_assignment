@@ -103,7 +103,7 @@ private extension MovieCollectionViewController {
 
     // Refresh Control 설정
     func setRefreshControl() {
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refreshMovieList), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         refreshControl.attributedTitle = NSAttributedString(string: "영화 목록을 업데이트하는 중입니다.")
         collectionView.refreshControl = refreshControl

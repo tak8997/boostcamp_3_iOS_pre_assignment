@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieTableViewController: UIViewController {
+class MoviesTableViewController: UIViewController {
     // MARK: - Properties
     private let cellIdentifier: String = "movieTableCell"
     private let refreshControl: UIRefreshControl = UIRefreshControl()
@@ -43,7 +43,7 @@ class MovieTableViewController: UIViewController {
 }
 
 // MARK: - Private Extension
-private extension MovieTableViewController {
+private extension MoviesTableViewController {
     func addMovieListNotificationObserver() {
         NotificationCenter.default.addObserver(
             self,
@@ -72,7 +72,7 @@ private extension MovieTableViewController {
         }
     }
 
-    @objc func refresh() {
+    @objc func refreshMovieList() {
         Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (_, error) in
             if error != nil {
                 self?.presentErrorAlert(actionTitle: "닫기", actionHandler: nil)
@@ -84,7 +84,7 @@ private extension MovieTableViewController {
     }
 
     func setRefreshControl() {
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refreshMovieList), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         refreshControl.attributedTitle = NSAttributedString(string: "영화 목록을 업데이트하는 중입니다.")
         tableView.refreshControl = refreshControl
@@ -92,7 +92,7 @@ private extension MovieTableViewController {
 }
 
 // MARK: - Table View Data Source
-extension MovieTableViewController: UITableViewDataSource {
+extension MoviesTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return OrderType.shared.movies.count
     }
@@ -108,7 +108,7 @@ extension MovieTableViewController: UITableViewDataSource {
 }
 
 // MARK: - Table View Delegate
-extension MovieTableViewController: UITableViewDelegate {
+extension MoviesTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
