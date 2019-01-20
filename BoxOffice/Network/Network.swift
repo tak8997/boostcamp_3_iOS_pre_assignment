@@ -27,7 +27,10 @@ class Network {
 
             guard let data: Data = data else { return }
             handler(data, nil)
-            turnOffNetworkIndicator()
+            
+            DispatchQueue.main.async {
+                turnOffNetworkIndicator()
+            }
         }
         dataTask.resume()
     }
@@ -62,23 +65,19 @@ private extension Network {
 
     // turn on: network indicator + activity indicator
     static func turnOnNetworkIndicator() {
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            // 현재 활성화 된 화면 중앙에 activity indicator 배치
-            if let window = UIApplication.shared.keyWindow {
-                activityIndicator.center = window.center
-                activityIndicator.hidesWhenStopped = true
-                activityIndicator.startAnimating()
-                window.addSubview(activityIndicator)
-            }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        // 현재 활성화 된 화면 중앙에 activity indicator 배치
+        if let window = UIApplication.shared.keyWindow {
+            activityIndicator.center = window.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.startAnimating()
+            window.addSubview(activityIndicator)
         }
     }
 
     // turn off: network indicator + activity indicator
     static func turnOffNetworkIndicator() {
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            activityIndicator.stopAnimating()
-        }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        activityIndicator.stopAnimating()
     }
 }
