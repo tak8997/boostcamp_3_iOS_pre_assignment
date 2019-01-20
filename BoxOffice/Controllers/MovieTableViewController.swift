@@ -44,7 +44,6 @@ class MovieTableViewController: UIViewController {
 
 // MARK: - Private Extension
 private extension MovieTableViewController {
-    // Notification Observer를 추가
     func addMovieListNotificationObserver() {
         NotificationCenter.default.addObserver(
             self,
@@ -53,7 +52,6 @@ private extension MovieTableViewController {
             object: nil)
     }
 
-    // Movie List Notification 을 받았을 때: navigation title 변경, tableView reload
     @objc func didReceiveMovieListNotification(_: Notification) {
         DispatchQueue.main.async { [weak self] in
             self?.setNavigationTitleByOrder()
@@ -61,9 +59,6 @@ private extension MovieTableViewController {
         }
     }
 
-    // Singleton으로 구현된 Movie List가 비어 있을 때 request
-    // 에러 발생 시: Alert Controller present
-    // 요청 성공 시: navigation title 변경, tableView reload
     func requestDataIfMovieListIsEmpty() {
         if OrderType.shared.movies.isEmpty {
             Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (_, error) in
@@ -77,7 +72,6 @@ private extension MovieTableViewController {
         }
     }
 
-    // Refresh Control에 의한 refresh
     @objc func refresh() {
         Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (_, error) in
             if error != nil {
@@ -89,7 +83,6 @@ private extension MovieTableViewController {
         }
     }
 
-    // Refresh Control 설정
     func setRefreshControl() {
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         refreshControl.tintColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
