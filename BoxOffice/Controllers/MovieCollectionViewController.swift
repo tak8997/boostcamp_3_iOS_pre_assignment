@@ -90,7 +90,7 @@ private extension MovieCollectionViewController {
     }
 
     // Refresh Control에 의한 refresh
-    @objc func refresh() {
+    @objc func refreshMovieList() {
         Requests.requestMovieList(order: OrderType.shared.order) { [weak self] (_, error) in
             if error != nil {
                 self?.presentErrorAlert(actionTitle: "닫기", actionHandler: nil)
